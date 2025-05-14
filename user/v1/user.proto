@@ -1,6 +1,6 @@
 syntax = "proto3";
 package user.v1;
-option go_package = "api-user-service/internal/module/user/grpc";
+option go_package = "api-user-service/internal/service/grpc/protoc";
 
 service UserService {
   // Перевірка, чи існує користувач за ID
