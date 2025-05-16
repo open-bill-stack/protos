@@ -1,0 +1,17 @@
+syntax = "proto3";
+package tariff.v1;
+option go_package = "api-tariff-service/internal/service/grpc/protoc";
+
+service TariffService {
+  // Перевірка, чи існує користувач за ID
+  rpc ExistsByID(ExistsByIDRequest) returns (ExistsByIDResponse);
+}
+// Запит перевірки по ID
+message ExistsByIDRequest {
+  string tariff_id = 1;
+}
+
+// Відповідь на перевірку по ID
+message ExistsByIDResponse {
+  bool exists = 1;
+}
