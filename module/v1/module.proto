@@ -1,0 +1,19 @@
+syntax = "proto3";
+package module.v1;
+option go_package = "api-external-module/internal/service/grpc/protoc";
+
+service ModuleDispatcher {
+  // Універсальний метод для виклику дій
+  rpc Dispatch(DispatchRequest) returns (DispatchResponse);
+}
+
+message DispatchRequest {
+  string action = 1;                         // Наприклад: "start_vm", "stop_vm"
+  map<string, string> params = 2;           // Вхідні параметри для дії
+}
+
+message DispatchResponse {
+  string status = 1;                         // "success" або "error"
+  string message = 2;                        // Пояснення (особливо у разі помилки)
+  string data = 3;                           // Опціонально: результат дії
+}
