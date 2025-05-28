@@ -2,6 +2,9 @@ syntax = "proto3";
 package module.v1;
 option go_package = "api-external-module/internal/service/grpc/protoc";
 
+import "google/protobuf/struct.proto";
+
+
 service ModuleDispatcher {
   // Універсальний метод для виклику дій
   rpc Dispatch(DispatchRequest) returns (DispatchResponse);
@@ -15,5 +18,5 @@ message DispatchRequest {
 message DispatchResponse {
   string status = 1;                         // "success" або "error"
   string message = 2;                        // Пояснення (особливо у разі помилки)
-  string data = 3;                           // Опціонально: результат дії
+  google.protobuf.Struct data = 3;           // Опціонально: результат дії
 }
